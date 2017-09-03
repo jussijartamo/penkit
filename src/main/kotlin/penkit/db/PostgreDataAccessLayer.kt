@@ -3,9 +3,9 @@ package penkit.db
 import org.dalesbred.Database
 import org.dalesbred.query.SqlQuery.*
 
-class PostgreDataAccessLayer(url: String, username: String, password: String) : DataAccessLayer {
+class PostgreDataAccessLayer(config: PostgresConfig) : DataAccessLayer {
 
-    private val db = Database.forUrlAndCredentials(url, username, password)
+    private val db = Database.forUrlAndCredentials(config.url, config.username, config.password)
 
     override fun viewCurrentSituation(): List<TeamView> {
         return db.findAll(TeamView::class.java, "SELECT * FROM teamview")

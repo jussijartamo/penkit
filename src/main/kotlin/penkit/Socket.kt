@@ -9,7 +9,7 @@ import com.google.gson.GsonBuilder
 import penkit.db.Entry
 
 @WebSocket
-class Socket(private val db: DataAccessLayer?) {
+class Socket(private val db: DataAccessLayer) {
 
     private val sessions = CopyOnWriteArrayList<Session>()
     private val gson = GsonBuilder().create()

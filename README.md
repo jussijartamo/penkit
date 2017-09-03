@@ -42,3 +42,7 @@ DONE
 - Stress test insert on same user and on many users at same time
 - Test Spark Websocket with Elm
 
+## DEPLOY
+```
+heroku deploy:jar target\penkit-1.0-SNAPSHOT-jar-with-dependencies.jar --app penkit
+```

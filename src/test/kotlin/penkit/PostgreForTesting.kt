@@ -3,6 +3,7 @@ package penkit
 import org.flywaydb.core.Flyway
 import penkit.db.Migration
 import penkit.db.PostgreDataAccessLayer
+import penkit.db.PostgresConfig
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres
 
 data class PostgreConfigForTesting(
@@ -19,7 +20,7 @@ object PostgreForTesting {
     fun url(): String = "jdbc:postgresql://${CONFIG.host}:${CONFIG.port}/${CONFIG.db}"
 
     fun dao(): PostgreDataAccessLayer {
-        return PostgreDataAccessLayer(url(), CONFIG.user, CONFIG.password)
+        return PostgreDataAccessLayer(PostgresConfig(url(), CONFIG.user, CONFIG.password))
     }
 
     fun cleanAndMigrate() {
